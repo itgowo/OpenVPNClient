@@ -1,21 +1,18 @@
 # OpenVPNClient
 Openvpn client for Synology NAS
 
-# First:pull image
+# 1:pull image
 ```
 docker pull itgowo/openvpn-client
 ```
-# Create client.ovpn
+# 2.Create client.ovpn
 * mkdir /var/services/openvpn
 * download ovpn file
 我是用的[OpenVPN](https://openvpn.net/)官方软件，所以通过server ui轻松拿到ovpn文件，然后下载到/var/services/openvpn目录下
-# Run Container
+# 3.Run Container
 ```
 docker run --name vpn  --net=host -v /dev/net/tun:/dev/net/tun -v /var/services/openvpn/client.ovpn:/etc/openvpn/client.ovpn --cap-add NET_ADMIN -d  itgowo/openvpn-client:latest
 ```
-* ***--name***Container name
-* ***--net***Net 网络模式为HOST
-* ***--cap-add NET_ADMIN***
 |参数名|参数值|说明|
 |---|---|---|
 |***--name***|vpn|容器名，可以随意定义|
